@@ -11,6 +11,7 @@
  - [Docker](https://www.docker.com/) for creating our build-environment.
  - [Qemu](https://www.qemu.org/) for emulating our operating system.
    - Remember to add Qemu to the path so that you can access it from your command-line. ([Windows instructions here](https://dev.to/whaleshark271/using-qemu-on-windows-10-home-edition-4062))
+ >Remember to add the build folder and the x86_64 and kernel folders inside it.
 
 ## GRUB Configuration
 
