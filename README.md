@@ -1,2 +1,81 @@
-# COSMOS-C
-A lightweight 64-bit operating system kernel created from scratch in C and assembler.  The project is called COSMOS-C, or COSMOS in C. It features custom IDT/IRQ handling, a HAL layer, a PS/2 keyboard driver, and a text console. Designed for education and low-level system development on x86_64 architecture.
+# Write Your Own 64-bit Operating System
+
+## Framework Name:
+**C# Open Source Managed Operating System -(in) C**
+
+**(COSMOS-C)**
+
+## Prerequisites
+
+ - A text editor such as [VS Code](https://code.visualstudio.com/).
+ - [Docker](https://www.docker.com/) for creating our build-environment.
+ - [Qemu](https://www.qemu.org/) for emulating our operating system.
+   - Remember to add Qemu to the path so that you can access it from your command-line. ([Windows instructions here](https://dev.to/whaleshark271/using-qemu-on-windows-10-home-edition-4062))
+
+## GRUB Configuration
+
+To boot your OS via GRUB, modify `grub.cfg`:
+
+```cfg
+menuentry "{your os name}" {
+    multiboot2 /boot/{your os name}.bin
+    boot
+}
+```
+
+## Setup
+
+Build an image for our build-environment:
+ - `docker build buildenv -t {your os name}-buildenv`
+
+## Build
+
+Enter build environment:
+ - Linux or MacOS: `docker run --rm -it -v "$(pwd)":/root/env {your os name}-buildenv`
+ - Windows (CMD): `docker run --rm -it -v "%cd%":/root/env {your os name}-buildenv`
+ - Windows (PowerShell): `docker run --rm -it -v "${pwd}:/root/env" {your os name}-buildenv`
+ - Please use the linux command if you are using `WSL`, `msys2` or `git bash`
+ - NOTE: If you are having trouble with an unshared drive, ensure your docker daemon has access to the drive you're development environment is in. For Docker Desktop, this is in "Settings > Shared Drives" or "Settings > Resources > File Sharing".
+
+Build for x86 (other architectures may come in the future):
+ - `make build-x86_64`
+ - If you are using Qemu, please close it before running this command to prevent errors.
+
+To leave the build environment, enter `exit`.
+
+## Emulate
+
+You can emulate your operating system using [Qemu](https://www.qemu.org/): (Don't forget to [add qemu to your path](https://dev.to/whaleshark271/using-qemu-on-windows-10-home-edition-4062#:~:text=2.-,Add%20Qemu%20path%20to%20environment%20variables%20settings,-Copy%20the%20Qemu)!)
+
+ - `qemu-system-x86_64 -cdrom dist/x86_64/{your os name}.iso`
+ - Note: Close the emulator when finished, so as to not block writing to `{your os name}.iso` for future builds.
+
+If the above command fails, try one of the following:
+ - Windows: [`qemu-system-x86_64 -cdrom dist/x86_64/{your os name}.iso -L "C:\Program Files\qemu"`](https://stackoverflow.com/questions/66266448/qemu-could-not-load-pc-bios-bios-256k-bin)
+ - Linux: [`qemu-system-x86_64 -cdrom dist/x86_64/{your os name}.iso -L /usr/share/qemu/`](https://unix.stackexchange.com/questions/134893/cannot-start-kvm-vm-because-missing-bios)
+ - Alternatively, install a custom BIOS binary file and link it to Qemu using the `-L` option.
+
+Alternatively, you should be able to load the operating system on a USB drive and boot into it when you turn on your computer. (I haven't actually tested this yet, but it appears to be working for others.)
+
+## Cleanup
+
+Remove the build-evironment image:
+ - `docker rmi {your os name}-buildenv -f`
+
+## Framework Documentation
+
+Detailed documentation of the keyboard driver, console framework, and system APIs is available in `DOCUMENTATION.md`
+
+## License
+
+This project is licensed under **GNU GPLv3**. See `LICENSE.md` for the full text.
+
+### Project Status & Contribution
+**⚠️ Work in Progress**
+This OS is actively under development. New features, updates, and optimizations will appear regularly.
+
+**💡 Get Involved:**
+Experiment, modify, and expand the OS using COSMOS-C as a foundation.
+Share ideas, report bugs, and contribute to the project.
+
+**Together, let's build COSMOS-C! 🌟**
