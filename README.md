@@ -1,6 +1,6 @@
 # Write Your Own 64-bit Operating System
 
-## Framework Name:
+## Template name for the operating system:
 **C# Open Source Managed Operating System -(in) C**
 
 **(COSMOS-C)**
