@@ -5,6 +5,9 @@
 
 **(COSMOS-C)**
 
+## Version
+COSMOS-C pre-alpha 0.0.1
+
 ## Prerequisites
 
  - A text editor such as [VS Code](https://code.visualstudio.com/).
