@@ -12,6 +12,7 @@ COSMOS-C pre-alpha 0.0.1
 
  - A text editor such as [VS Code](https://code.visualstudio.com/).
  - [Docker](https://www.docker.com/) for creating our build-environment.
+   -  On Linux, this option is not **required**!!!!
  - [Qemu](https://www.qemu.org/) for emulating our operating system.
    - Remember to add Qemu to the path so that you can access it from your command-line. ([Windows instructions here](https://dev.to/whaleshark271/using-qemu-on-windows-10-home-edition-4062))
  >Remember to add the build folder and the x86_64 and kernel folders inside it.
