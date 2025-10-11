@@ -30,4 +30,8 @@ void timer_callbacks_update(void) {
             if (callbacks[i].cb) callbacks[i].cb();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 24522878a6beab94af9c35dce3e21874168045e6
