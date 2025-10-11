@@ -6,7 +6,7 @@
 #define PIT_COMMAND  0x43
 #define PIT_FREQUENCY 1193182 // Hz
 
-// initialize PIT for concret frequency
+// inicjalizacja PIT na określoną częstotliwość
 void pit_init(uint32_t frequency) {
     uint16_t divisor = (uint16_t)(PIT_FREQUENCY / frequency);
     outb(PIT_COMMAND, 0x36);            // channel 0, lo/hi byte, mode 3 (square wave)
@@ -16,5 +16,4 @@ void pit_init(uint32_t frequency) {
     print_str("[PIT] Initialized at ");
     print_int(frequency);
     print_str(" Hz\n");
-
 }

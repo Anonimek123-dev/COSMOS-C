@@ -2,6 +2,8 @@
 #include "HAL/console/print.h"
 #include "arch/x86_64/PIC/pic.h"
 #include "Drivers/PS2/keyboard/ps2.h"
+#include "Core/arch/x86_64/TIMER/PIT/pit.h"
+#include "Core/arch/x86_64/TIMER/timer.h"
 
 // Forward declare PIC send EOI and keyboard handler
 extern void pic_send_eoi(unsigned char irq);
@@ -23,6 +25,9 @@ void isr_handler(uint64_t vector) {
         unsigned char irq = (unsigned char)(vector - 32);
         // dispatch common IRQs here
         switch (irq) {
+            case 0:  // PIT timer IRQ0
+                timer_tick();
+                break;
             case 1: // keyboard
                 keyboard_irq_handler();
                 break;
