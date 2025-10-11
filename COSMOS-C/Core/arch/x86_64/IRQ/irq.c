@@ -23,6 +23,8 @@ void isr_handler(uint64_t vector) {
         unsigned char irq = (unsigned char)(vector - 32);
         // dispatch common IRQs here
         switch (irq) {
+            case 0: // PIT Timer IRQ0
+                timer_tick();
             case 1: // keyboard
                 keyboard_irq_handler();
                 break;
