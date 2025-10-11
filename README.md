@@ -1,22 +1,21 @@
 # Write Your Own 64-bit Operating System
 
-## Template name for the operating system:
+## Template name for operating system:
 **C# Open Source Managed Operating System -(in) C**
 
 **(COSMOS-C)**
 
 ## Version
-COSMOS-C pre-alpha 0.0.1
+**COSMOS-C pre-alpha 0.0.2**
 
 ## Prerequisites
-
+ 
  - A text editor such as [VS Code](https://code.visualstudio.com/).
  - [Docker](https://www.docker.com/) for creating our build-environment.
    -  On Linux, this option is not **required**!!!!
  - [Qemu](https://www.qemu.org/) for emulating our operating system.
    - Remember to add Qemu to the path so that you can access it from your command-line. ([Windows instructions here](https://dev.to/whaleshark271/using-qemu-on-windows-10-home-edition-4062))
  >Remember to add the build folder and the x86_64 and kernel folders inside it.
-
 ## GRUB Configuration
 
 To boot your OS via GRUB, modify `grub.cfg`:
@@ -67,9 +66,9 @@ Alternatively, you should be able to load the operating system on a USB drive an
 Remove the build-evironment image:
  - `docker rmi {your os name}-buildenv -f`
 
-## Framework Documentation
+## Documentation
 
-Detailed documentation of the keyboard driver, console framework, and system APIs is available in `DOCUMENTATION.md`
+Detailed documentation of the keyboard driver, console framework, and system APIs is available in `DOCUMENTATION` folder. If you find any bugs, please comment this repository in Github, in COSMOS-C discord server, or send a email  `cosmos-c@gmail.com`.
 
 ## License
 
